@@ -1,24 +1,22 @@
 package com.ufcg.psoft.tccmatch.dto;
 
-import com.ufcg.psoft.tccmatch.entity.TCCTheme;
+import com.ufcg.psoft.tccmatch.entity.StudyArea;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString
-public class ProfessorDTO {
+public class TCCThemeDTO {
     @NotEmpty
-    private String name;
+    private String title;
 
-    @Email
-    private String email;
+    private String description;
 
-    private List<String> laboratories;
-
+    private Set<StudyArea> studyAreas;
 }

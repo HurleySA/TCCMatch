@@ -2,11 +2,13 @@ package com.ufcg.psoft.tccmatch.entity;
 
 import javax.persistence.*;
 
+import com.ufcg.psoft.tccmatch.dto.ProposalTCCThemeDTO;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -27,8 +29,12 @@ public class Student {
 
     private String expectedPeriod;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<StudyArea> studyAreas;
+
+    @JoinColumn(name = "student_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ProposalTCCTheme> proposalTCCTheme;
 
     @Builder
     public Student(String name, String enrollment, String email, String expectedPeriod) {
@@ -37,10 +43,13 @@ public class Student {
         this.email = email;
         this.expectedPeriod = expectedPeriod;
         this.studyAreas = new ArrayList<StudyArea>();
+        this.proposalTCCTheme = new ArrayList<ProposalTCCTheme>();
     }
 
     public void addStudyArea(StudyArea studyArea){
         studyAreas.add(studyArea);
     }
+
+    public void addProposalTCCTheme(ProposalTCCTheme proposalTCCTheme) { this.proposalTCCTheme.add(proposalTCCTheme); }
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.ufcg.psoft.tccmatch.entity.Enums.UserRole;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
